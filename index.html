@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="background">
+  <div class="card">
+    <div class="dark-toggle">
+      <label>💤 <input type="checkbox" id="darkModeToggle"></label>
+    </div>
+    <div class="logo">💠Vyron</div>
+    <h2>Welcome Back!</h2>
+    <p>We missed you! Please enter your details.</p>
+    
+    <form>
+      <label>Email</label>
+      <input type="email" id="email" placeholder="Enter your Email" required>
+
+      <label>Password</label>
+      <div class="password-field">
+        <input type="password" id="password" placeholder="Enter Password" required>
+        <button type="button" class="toggle-pass">👁️</button>
+      </div>
+
+      <div class="options">
+        <label><input type="checkbox"> Remember me</label>
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="btn-primary">Sign in</button>
+
+      <div class="divider">or</div>
+
+      <button type="button" class="btn-google">Sign in with Google</button>
+    </form>
+
+    <p class="signup">Don’t have an account? <a href="signup.html">Sign up</a></p>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const darkToggle = document.getElementById("darkModeToggle");
+  if (darkToggle) {
+    darkToggle.addEventListener("change", () => {
+      document.body.classList.toggle("dark", darkToggle.checked);
+    });
+  }
+
+  const pwBtn = document.querySelector(".toggle-pass");
+  const pwField = document.getElementById("password");
+  if (pwBtn && pwField) {
+    pwBtn.addEventListener("click", () => {
+      const isShown = pwField.type === "text";
+      pwField.type = isShown ? "password" : "text";
+      pwBtn.textContent = isShown ? "👁️" : "🙈";
+    });
+  }
+
+  const form = document.querySelector("form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+    alert(`✅ Mock login successful!\nWelcome: ${email}`);
+  });
+
+  const googleBtn = document.querySelector(".btn-google");
+  googleBtn.addEventListener("click", () => {
+    alert("✅ Mock login with Google!");
+  });
+});
+</script>
+</body>
+</html>
